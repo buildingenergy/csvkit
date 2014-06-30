@@ -58,6 +58,7 @@ class CSVStat(CSVKitUtility):
         if len(operations) > 1:
             self.argparser.error('Only one statistic argument may be specified (mean, median, etc).')
 
+        summary = {}
         for c in tab:
             values = sorted(filter(lambda i: i is not None, c))
 
@@ -116,10 +117,15 @@ class CSVStat(CSVKitUtility):
 
                     if c.type == unicode:
                         self.output_file.write(u'\tMax length: %i\n' % stats['len'])
+                stats['len_unique'] = len(stats['unique'])
+                stats['unique'] stats['unique'][:25]
+                stats['type'] = str(c.type)
+                summary[c.name] = stats
 
         if not operations:
             self.output_file.write(u'\n')
             self.output_file.write(u'Row count: %s\n' % tab.count_rows())
+        return summary
 
     def get_min(self, c, values, stats):
         if c.type == NoneType:
