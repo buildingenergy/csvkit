@@ -119,7 +119,7 @@ class CSVKitUtility(object):
         try:
             import signal
             signal.signal(signal.SIGPIPE, signal.SIG_DFL)
-        except (ImportError, AttributeError):
+        except (ImportError, AttributeError, ValueError):
             #Do nothing on platforms that don't have signals or don't have SIGPIPE
             pass
 
