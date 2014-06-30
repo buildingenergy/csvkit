@@ -118,7 +118,7 @@ class CSVStat(CSVKitUtility):
                     if c.type == unicode:
                         self.output_file.write(u'\tMax length: %i\n' % stats['len'])
                 stats['len_unique'] = len(stats['unique'])
-                stats['unique'] = stats['unique'][:25]
+                stats['unique'] = list(stats['unique'])[:25]
                 stats['type'] = str(c.type)
                 summary[c.name] = stats
 
